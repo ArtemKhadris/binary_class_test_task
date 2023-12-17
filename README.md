@@ -68,8 +68,20 @@ Unused metrics:
 - MCC - Similar information is captured by precision, recall, and F1 score, making MCC redundant in this context.
 - Log Loss - Binary cross-entropy is used, providing a simpler and closely related measure for this classification task.
 
+### About models
+All selected models were trained on the created dataset for 20 epochs. This amount was determined experimentally: after 20 epochs, overfitting begins (maximum accuracy is achieved, which subsequently begins to gradually decrease).
+When training the models, a split dataset was used (20% testing, 80% training). Batch is 32 and size if images is 244x244.
+
+**TensorFlow**: is a flexibile and scalabile, making it suitable for a wide range of deep learning and machine learning tasks; has a large user community, so, we can find ample resources, tutorials, and pre-trained models; seamlessly integrates with other Google services and tools, so, if you have not powerful PC, you can use Google Colab, to train and val TF models online and free.
+
+**PyTorch**: is popular DL & ML framework, favored for its dynamic computational graph and ease of use; due to its popularity and ease of use if difficulties arise, finding the answer is not that hard.
+
+**Yolo**: is a well-known model for detection, classification, segmentation and other functions; easy to use, works quickly, does not require many resources, works well if the dataset is compiled correctly.
+
+**Scikit-learn**: is a popular machine learning library for classical machine learning algorithms, not deep learning. It is excellent for traditional machine learning tasks, but it lacks the deep learning capabilities provided by frameworks like TensorFlow, PyTorch, or YOLOv8. Some functions from this package were used to calculate metrics.
+
 ### TensorFlow model
-The first model is a convolutional neural network (CNN) for binary image classification using TensorFlow and Keras. The model is created in a ```makin_model_tf``` function in the ```makin_model.py```. The model architecture consists of three convolutional layers with max-pooling, followed by a flattened layer, a dense layer with ReLU activation and dropout, and a final dense layer with a sigmoid activation for binary classification. The model is compiled with the Adam optimizer and binary cross-entropy loss. Additional metrics such as accuracy, precision, recall, mean absolute error (MAE), and mean squared error (MSE) are tracked during training. The function includes data preparation steps, data generators, early stopping, learning rate reduction, and model checkpointing. After training, the model is evaluated on a test set, and various metrics are computed. Visualization includes plots of accuracy over epochs, precision-recall curve, ROC curve, and MAE/MSE over epochs. The function provides the option to redirect standard output to a file for logging, and its execution is controlled by a conditional flag.
+The first model is a convolutional neural network (CNN) for binary image classification using TensorFlow and Keras. The model is created in a ```makin_model_tf``` function in the ```makin_model.py```. The model architecture consists of three convolutional layers with max-pooling, followed by a flattened layer, a dense layer with ReLU activation and dropout, and a final dense layer with a sigmoid activation for binary classification. The model is compiled with the Adam optimizer and binary cross-entropy loss. Additional metrics are tracked during training. The function includes data preparation steps, data generators, learning rate reduction, and model checkpointing. After training, the model is evaluated on a test set, and various metrics are computed. Visualization includes plots of accuracy over epochs, precision-recall curve, ROC-AUC curve, and MAE/MSE over epochs. The function provides the option to redirect standard output to a file for logging, and its execution is controlled by a conditional flag.
 - Graphs:
 ![figure1](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/fb6a4765-c2ad-4578-9d6f-f1e2a2b0f5b8)
 
@@ -77,7 +89,7 @@ The first model is a convolutional neural network (CNN) for binary image classif
 - Model is in /tf_models/best_model.keras
 
 ### PyTorch model
-The second model is a binary image classification model in PyTorch, employing a CNN. The model is created in a ```makin_model_pt``` function in the same file as before. The architecture involves two convolutional layers, max-pooling, and two fully connected layers with ReLU activation. Training utilizes CrossEntropyLoss and the Adam optimizer, tracking metrics like accuracy. The script includes data handling, custom data loaders, and a CustomDataset class for loading and transforming images. The training loop iterates over epochs, capturing metrics such as training and testing losses, accuracies, MAE and MSE. Model checkpointing saves the state dictionary for future use. Visualizations encompass plots for training and testing losses, accuracies, MAE, and MSE over epochs, along with ROC-AUC and Precision-Recall curves for performance assessment. The code provides flexibility with optional logging to a file, controlled by the ```create_flag```.
+The second model is a binary image classification model in PyTorch, employing a CNN. The model is created in a ```makin_model_pt``` function in the same file as before. The architecture involves two convolutional layers, max-pooling, and two fully connected layers with ReLU activation. Training utilizes CrossEntropyLoss and the Adam optimizer, tracking metrics. The script includes data handling, custom data loaders, and a custom dataset class for loading and transforming images. The training loop iterates over epochs, capturing metrics. Model checkpointing saves the state dictionary for future use. Visualizations encompass plots for training and testing losses, accuracies, MAE, and MSE over epochs, along with ROC-AUC and Precision-Recall curves for performance assessment. The code provides flexibility with optional logging to a file, controlled by the ```create_flag```.
 - Graphs:
 ![figure1](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/3af4a1d5-0c29-47af-aa23-1fbbe762af37)
 
@@ -85,7 +97,7 @@ The second model is a binary image classification model in PyTorch, employing a 
 - Model is in /pt_models/model.pth
 
 ### Yolo model
-For third model will be used an YoloV8 model for classification images. The premade model is yolov8m-cls.pt (its medium size model)
+For third model will be used an YoloV8 model for classification images. The premade model is yolov8m-cls.pt (its medium size model).
 - Graphs:
 ![results](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/17f8fba7-3893-4363-afba-a91f3de9595c)
 
