@@ -9,7 +9,7 @@ The input to the script is the path to the video and the path to the json file w
 ## Before we begin...
 Packages installed in the virtual environment when writing this solution in the ```requirements.txt``` file. After downloading the project files, you need to go to the folder where it was downloaded using the command: ```cd \PATH\TO\PROJECT```. After this, you need to create a virtual environment using the command: ```python -m venv UR_VENV_NAME```. Activate venv: ```source UR_VENV_NAME/bin/activate``` for Linux and ```UR_VENV_NAME\Scripts\activate.bat``` for Windows. And install reqs: ```pip install -r requirements.txt```.
 
-***Or just go to the folder where it was downloaded using the command: ```cd \PATH\TO\PROJECT```. And run ```making_venv.bat``` for Windows or ```making_venv.sh``` for Linux.*** - That`s better way, cause it will install PyTorch fully.
+***Or just go to the folder where it was downloaded using the command: ```cd \PATH\TO\PROJECT```. And run ```making_venv.bat``` for Windows or ```making_venv.sh``` for Linux.*** - That`s better way, cause it will install PyTorch fully and right version, so you can use all scripts without any problem.
 
 >BUT (I don’t know why, but it worked for me with different versions of CUDA, so maybe you won't need it, but you never know...)
 >
@@ -71,11 +71,7 @@ Unused metrics:
 ### TensorFlow model
 The first model is a convolutional neural network (CNN) for binary image classification using TensorFlow and Keras. The model is created in a ```makin_model_tf``` function in the ```makin_model.py```. The model architecture consists of three convolutional layers with max-pooling, followed by a flattened layer, a dense layer with ReLU activation and dropout, and a final dense layer with a sigmoid activation for binary classification. The model is compiled with the Adam optimizer and binary cross-entropy loss. Additional metrics such as accuracy, precision, recall, mean absolute error (MAE), and mean squared error (MSE) are tracked during training. The function includes data preparation steps, data generators, early stopping, learning rate reduction, and model checkpointing. After training, the model is evaluated on a test set, and various metrics are computed. Visualization includes plots of accuracy over epochs, precision-recall curve, ROC curve, and MAE/MSE over epochs. The function provides the option to redirect standard output to a file for logging, and its execution is controlled by a conditional flag.
 - Graphs:
-![figure1](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/9ddd0a04-60f2-4e89-95ef-a614974d0661)
-![figure2](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/947daab7-19cc-4da5-aee5-07ab7acc6406)
-![figure3](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/e7a7d2e5-46ed-4a1c-a053-b325e992fe4a)
-![figure4](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/658308b8-3273-4e8a-b360-9e3377d73a29)
-![figure5](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/e43f21ab-a6a7-4238-a912-1beda217d37f)
+![figure1](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/fb6a4765-c2ad-4578-9d6f-f1e2a2b0f5b8)
 
 - Text output is in /tf_models/output.txt
 - Model is in /tf_models/best_model.keras
@@ -91,9 +87,7 @@ The second model is a binary image classification model in PyTorch, employing a 
 ### Yolo model
 For third model will be used an YoloV8 model for classification images. The premade model is yolov8m-cls.pt (its medium size model)
 - Graphs:
-![results](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/218fadee-1e07-48b2-81df-c020f4ceb409)
-![confusion_matrix](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/d72ffe99-7d63-4dfd-95d0-601011a5d075)
-![confusion_matrix_normalized](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/e68f0bef-d0a9-4829-8009-651a6321d9a3)
+![results](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/17f8fba7-3893-4363-afba-a91f3de9595c)
 
 - All other is in /yolo_model
 
@@ -119,3 +113,11 @@ To run this model you can use ```python process_vid_by_pt.py "PATH\TO\INPUT\VIDE
 > JSON output file. Will look like this ```[[4,11],[15,17],[22,25]]```
 
 ### Yolo
+To run this model you can use ```python process_vid_by_yolo.py "PATH\TO\INPUT\VIDEO\video.mp4" "PATH\TO\INPUT\JSON_FILE\polygons.json" "PATH\TO\OUTPUT\JSON_FILE\output.json"```
+> Arguments:
+> 
+> Video - regular video, frames from which need to be classified
+> 
+> JSON input with polygons. Should look like ```[[536, 573], [873, 562], [824, 422], [933, 420]]```
+> 
+> JSON output file. Will look like this ```[[4,11],[15,17],[22,25]]```
