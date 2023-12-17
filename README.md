@@ -54,14 +54,28 @@ Unused metrics:
 ### TensorFlow model
 The first model is a convolutional neural network (CNN) for binary image classification using TensorFlow and Keras. The model is created in a ```makin_model_tf``` function in the ```makin_model.py```. The model architecture consists of three convolutional layers with max-pooling, followed by a flattened layer, a dense layer with ReLU activation and dropout, and a final dense layer with a sigmoid activation for binary classification. The model is compiled with the Adam optimizer and binary cross-entropy loss. Additional metrics such as accuracy, precision, recall, mean absolute error (MAE), and mean squared error (MSE) are tracked during training. The function includes data preparation steps, data generators, early stopping, learning rate reduction, and model checkpointing. After training, the model is evaluated on a test set, and various metrics are computed. Visualization includes plots of accuracy over epochs, precision-recall curve, ROC curve, and MAE/MSE over epochs. The function provides the option to redirect standard output to a file for logging, and its execution is controlled by a conditional flag.
 - Graphs:
+![figure1](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/9ddd0a04-60f2-4e89-95ef-a614974d0661)
+![figure2](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/947daab7-19cc-4da5-aee5-07ab7acc6406)
+![figure3](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/e7a7d2e5-46ed-4a1c-a053-b325e992fe4a)
+![figure4](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/658308b8-3273-4e8a-b360-9e3377d73a29)
+![figure5](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/e43f21ab-a6a7-4238-a912-1beda217d37f)
 
 - Text output is in /tf_models/output.txt
 - Model is in /tf_models/best_model.keras
 
 ### PyTorch model
-The second model is a binary image classification model in PyTorch, employing a CNN. The model is created in a ```makin_model_pt``` function in the same file as before. The architecture involves two convolutional layers, max-pooling, and two fully connected layers with ReLU activation. Training utilizes CrossEntropyLoss and the Adam optimizer, tracking metrics like accuracy. The script includes data handling, custom data loaders, and a CustomDataset class for loading and transforming images. The training loop iterates over epochs, capturing metrics such as training and testing losses, accuracies, MAE and MSE. Model checkpointing saves the state dictionary for future use. Visualizations encompass plots for training and testing losses, accuracies, MAE, and MSE over epochs, along with ROC and Precision-Recall curves for performance assessment. The code provides flexibility with optional logging to a file, controlled by the ```create_flag```.
+The second model is a binary image classification model in PyTorch, employing a CNN. The model is created in a ```makin_model_pt``` function in the same file as before. The architecture involves two convolutional layers, max-pooling, and two fully connected layers with ReLU activation. Training utilizes CrossEntropyLoss and the Adam optimizer, tracking metrics like accuracy. The script includes data handling, custom data loaders, and a CustomDataset class for loading and transforming images. The training loop iterates over epochs, capturing metrics such as training and testing losses, accuracies, MAE and MSE. Model checkpointing saves the state dictionary for future use. Visualizations encompass plots for training and testing losses, accuracies, MAE, and MSE over epochs, along with ROC-AUC and Precision-Recall curves for performance assessment. The code provides flexibility with optional logging to a file, controlled by the ```create_flag```.
 - Graphs:
+![figure1](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/3af4a1d5-0c29-47af-aa23-1fbbe762af37)
 
 - Text output in /pt_models/output.txt
 - Model is in /pt_models/model.pth
 
+### Yolo model
+For third model will be used an YoloV8 model for classification images. The premade model is yolov8m-cls.pt (its medium size model)
+- Graphs:
+![results](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/218fadee-1e07-48b2-81df-c020f4ceb409)
+![confusion_matrix](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/d72ffe99-7d63-4dfd-95d0-601011a5d075)
+![confusion_matrix_normalized](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/e68f0bef-d0a9-4829-8009-651a6321d9a3)
+
+- All other is in /yolo_model
