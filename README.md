@@ -79,3 +79,10 @@ For third model will be used an YoloV8 model for classification images. The prem
 ![confusion_matrix_normalized](https://github.com/ArtemKhadris/binary_class_test_task/assets/106828028/e68f0bef-d0a9-4829-8009-651a6321d9a3)
 
 - All other is in /yolo_model
+
+## Using models
+### TensorFlow
+
+### PyTorch
+
+### Yolo
