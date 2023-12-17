@@ -133,3 +133,6 @@ To run this model you can use ```python process_vid_by_yolo.py "PATH\TO\INPUT\VI
 > JSON input with polygons. Should look like ```[[536, 573], [873, 562], [824, 422], [933, 420]]```
 > 
 > JSON output file. Will look like this ```[[4,11],[15,17],[22,25]]```
+
+## Results
+You can also take a look at my results (results folder). Unfortunately, I can only test the scripts on the videos from which model was trained. Somehow this will not be able to qualitatively characterize the models, but a conclusion can be drawn: The script running on the yolo model runs the fastest, the slowest is tensorflow. However, the learning process has an inverse relationship - the most demanding was learning the yolo model.
