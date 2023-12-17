@@ -6,6 +6,23 @@ The task is to “classify” the frame - whether there is a “foreign” objec
 
 The input to the script is the path to the video and the path to the json file with coordinates. The output should be a json file containing information about the frames on which a “foreign” object was detected, in the following form: the number of the first frame on which a foreign object was noticed in the area, and the frame number when all “foreign” objects left the area . There can be several such sequences of frames. For example, for the result set ```[1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1]```, where 0 means there is a foreign object in the area and 1 means it is there no, the result should be ```[[3, 5], [9, 11]]```.
 
+## Before we begin...
+Packages installed in the virtual environment when writing this solution in the ```requirements.txt``` file. After downloading the project files, you need to go to the folder where it was downloaded using the command: ```cd \PATH\TO\PROJECT```. After this, you need to create a virtual environment using the command: ```python -m venv UR_VENV_NAME```. Activate venv: ```source UR_VENV_NAME/bin/activate``` for Linux and ```UR_VENV_NAME\Scripts\activate.bat``` for Windows. And install reqs: ```pip install -r requirements.txt```.
+
+***Or just go to the folder where it was downloaded using the command: ```cd \PATH\TO\PROJECT```. And run ```making_venv.bat``` for Windows or ```making_venv.sh``` for Linux.*** - That`s better way, cause it will install PyTorch fully.
+
+>BUT (I don’t know why, but it worked for me with different versions of CUDA, so maybe you won't need it, but you never know...)
+>
+>If you want to use the PyTorch model, you first need to install and switch the [CUDA 11.8 version](https://developer.nvidia.com/cuda-11-8-0-download-archive).
+>
+>**Windows**
+>
+>To change CUDA version after installation you need to change environment variables ```CUDA_PATH``` to ```C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8``` and in PATH variable make these paths the TOP: ```C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin``` and ```C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\libnvvp```
+>
+>**Linux**
+>
+>To change CUDA version installation you may use [THIS REPO](https://github.com/phohenecker/switch-cuda) or directly set your ```/usr/local/cuda``` symbolic link to the correct version.
+
 ## Choosing a Solution Approach
 In my opinion (but it is still worth testing experimentally), the best approach to solving this problem would be to find “foreign” objects in the frame, and if this object is in the area, then give a negative result (accordingly, if it is not there, then positive). But for this approach there is no dataset of “foreign” objects. Neither such a dataset nor a trained model exists in the public domain due to the narrow focus of the task. The dataset itself can be created using various 3D editors (creating models there, screenshots of various satisfying projections, etc.) or simply photographing them from different angles.
 And this approach should be tested because there is no understanding of how quickly and accurately it can work.
@@ -14,7 +31,7 @@ Obviously, in the conditions of a test data task, that approach is inappropriate
 
 This approach also has disadvantages. There may be an object in the area that is not “foreign”. The area may be blocked by other objects (a fly will land on the camera or a bird will land in front of the camera). There are also no shots in different weather conditions, different times of day, etc. Because of this, false classifications are possible. Also, training the model and testing (in real conditions) will take a lot of time and require powerful and compatible equipment. Therefore, small models are used in the training task.
 
-## Model preparation
+## Dataset and Model preparation
 ### Preparing the dataset
 After processing the video, we have a dataset that consists of a frame (cropped area) and a description of this frame, whether there is a foreign object on it or not (0/1). Information about them is recorded in a csv file.
 
@@ -82,7 +99,23 @@ For third model will be used an YoloV8 model for classification images. The prem
 
 ## Using models
 ### TensorFlow
+To run this model you can use ```python process_vid_by_tf.py "PATH\TO\INPUT\VIDEO\video.mp4" "PATH\TO\INPUT\JSON_FILE\polygons.json" "PATH\TO\OUTPUT\JSON_FILE\output.json"```
+> Arguments:
+> 
+> Video - regular video, frames from which need to be classified
+> 
+> JSON input with polygons. Should look like ```[[536, 573], [873, 562], [824, 422], [933, 420]]```
+> 
+> JSON output file. Will look like this ```[[4,11],[15,17],[22,25]]```
 
 ### PyTorch
+To run this model you can use ```python process_vid_by_pt.py "PATH\TO\INPUT\VIDEO\video.mp4" "PATH\TO\INPUT\JSON_FILE\polygons.json" "PATH\TO\OUTPUT\JSON_FILE\output.json"```
+> Arguments:
+> 
+> Video - regular video, frames from which need to be classified
+> 
+> JSON input with polygons. Should look like ```[[536, 573], [873, 562], [824, 422], [933, 420]]```
+> 
+> JSON output file. Will look like this ```[[4,11],[15,17],[22,25]]```
 
 ### Yolo
