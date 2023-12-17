@@ -31,25 +31,25 @@ usual_batch = 32
 dataset_split_size = 0.2
 
 # Files paths
-polygons_path = r'C:\Users\artem\Desktop\programming\asaia\polygons.json' # PATH TO AN INPUT POLYGONS JSON FILE
-time_intervals_path = r'C:\Users\artem\Desktop\programming\asaia\time_intervals.json' # PATH TO AN INPUT TIME INTERVALS JSON FILE
-videos_path = r'C:\Users\artem\Desktop\programming\asaia\videos' # PATH TO AN INPUT VIDEOS FILE (FOLDER WITH VIDEOS)
-images_path = r'C:\Users\artem\Desktop\programming\asaia\images' # PATH TO FRAMES FROM VIDEOS (WILL BE CREATED BY FUNCTION)
-dataset_folder = r'C:\Users\artem\Desktop\programming\asaia\dataset' # PATH TO THE DATASET FOR TRAINING OUR MODELS (WILL BE CREATED BY FUNCTION)
-csv_file_path = r'C:\Users\artem\Desktop\programming\asaia\dataset\data.csv' # PATH TO THE CSV FILE DESCRIBING OUR DATASET (WILL BE CREATED BY FUNCTION)
-dataset_for_yolo = r'C:\Users\artem\Desktop\programming\asaia\dataset_for_yolo' # PATH TO YOLO DATASET (WILL BE CREATED BY FUNCTION)
-dataset_for_yolo_train = os.path.join(dataset_for_yolo, 'train') # PATH TO YOLO DATASET (TRAIN, WILL BE CREATED BY FUNCTION)
-dataset_for_yolo_val = os.path.join(dataset_for_yolo, 'val') # PATH TO YOLO DATASET (VAL, WILL BE CREATED BY FUNCTION)
-tf_checkpoint_path = r"C:\Users\artem\Desktop\programming\asaia\models\tf_models\best_model.keras" # PATH TO TF MODEL (WILL BE CREATED BY FUNCTION)
-tf_fig1_path = r"C:\Users\artem\Desktop\programming\asaia\models\tf_models\figure1.png" # PATH TO 1ST TF GRAPH (WILL BE CREATED BY FUNCTION)
-tf_fig2_path = r"C:\Users\artem\Desktop\programming\asaia\models\tf_models\figure2.png" # PATH TO 2ND TF GRAPH (WILL BE CREATED BY FUNCTION)
-tf_fig3_path = r"C:\Users\artem\Desktop\programming\asaia\models\tf_models\figure3.png" # PATH TO 3RD TF GRAPH (WILL BE CREATED BY FUNCTION)
-tf_fig4_path = r"C:\Users\artem\Desktop\programming\asaia\models\tf_models\figure4.png" # PATH TO 4TH TF GRAPH (WILL BE CREATED BY FUNCTION)
-tf_fig5_path = r"C:\Users\artem\Desktop\programming\asaia\models\tf_models\figure5.png" # PATH TO 5TH TF GRAPH (WILL BE CREATED BY FUNCTION)
-tf_text_output_path = r'C:\Users\artem\Desktop\programming\asaia\models\tf_models\output.txt' # PATH TO TXT TF MODEL (WILL BE CREATED BY FUNCTION)
-pt_checkpoint_path = r'C:\Users\artem\Desktop\programming\asaia\models\pt_models\model.pth' # PATH TO PYTORCH MODEL (WILL BE CREATED BY FUNCTION)
-pt_fig1_path = r'C:\Users\artem\Desktop\programming\asaia\models\pt_models\figure1.png' # PATH TO 1ST PT GRAPH (WILL BE CREATED BY FUNCTION)
-pt_text_output_path = r'C:\Users\artem\Desktop\programming\asaia\models\pt_models\output.txt' # PATH TO TXT PT MODEL (WILL BE CREATED BY FUNCTION)
+polygons_path = r'###' # PATH TO AN INPUT POLYGONS JSON FILE
+time_intervals_path = r'###' # PATH TO AN INPUT TIME INTERVALS JSON FILE
+videos_path = r'###' # PATH TO AN INPUT VIDEOS FILE (FOLDER WITH VIDEOS)
+images_path = r'###' # PATH TO FRAMES FROM VIDEOS; FOLDER (WILL BE CREATED BY FUNCTION)
+dataset_folder = r'###' # PATH TO THE DATASET FOR TRAINING OUR MODELS; FOLDER (WILL BE CREATED BY FUNCTION)
+csv_file_path = r'###' # PATH TO THE CSV FILE DESCRIBING OUR DATASET; SHOULD BE NAMED LIKE "data.csv" (WILL BE CREATED BY FUNCTION)
+dataset_for_yolo = r'###' # PATH TO YOLO DATASET; FOLDER (WILL BE CREATED BY FUNCTION)
+dataset_for_yolo_train = os.path.join(dataset_for_yolo, 'train') # PATH TO YOLO DATASET; FOLDER (TRAIN, WILL BE CREATED BY FUNCTION)
+dataset_for_yolo_val = os.path.join(dataset_for_yolo, 'val') # PATH TO YOLO DATASET; FOLDER (VAL, WILL BE CREATED BY FUNCTION)
+tf_checkpoint_path = r'###' # PATH TO TF MODEL; SHOULD BE NAMED LIKE "best_model.keras" (WILL BE CREATED BY FUNCTION)
+tf_fig1_path = r'###' # PATH TO 1ST TF GRAPH; SHOULD BE NAMED LIKE "figureN.png" (WILL BE CREATED BY FUNCTION)
+tf_fig2_path = r'###' # PATH TO 2ND TF GRAPH; SHOULD BE NAMED LIKE "figureN.png" (WILL BE CREATED BY FUNCTION)
+tf_fig3_path = r'###' # PATH TO 3RD TF GRAPH; SHOULD BE NAMED LIKE "figureN.png" (WILL BE CREATED BY FUNCTION)
+tf_fig4_path = r'###' # PATH TO 4TH TF GRAPH; SHOULD BE NAMED LIKE "figureN.png" (WILL BE CREATED BY FUNCTION)
+tf_fig5_path = r'###' # PATH TO 5TH TF GRAPH; SHOULD BE NAMED LIKE "figureN.png" (WILL BE CREATED BY FUNCTION)
+tf_text_output_path = r'###' # PATH TO TXT TF MODEL; SHOULD BE NAMED LIKE "output.txt" (WILL BE CREATED BY FUNCTION)
+pt_checkpoint_path = r'###' # PATH TO PYTORCH MODEL; SHOULD BE NAMED LIKE "model.pth" (WILL BE CREATED BY FUNCTION)
+pt_fig1_path = r'###' # PATH TO 1ST PT GRAPH; SHOULD BE NAMED LIKE "figureN.png" (WILL BE CREATED BY FUNCTION)
+pt_text_output_path = r'###' # PATH TO TXT PT MODEL; SHOULD BE NAMED LIKE "output.txt" (WILL BE CREATED BY FUNCTION)
 
 # Yolo command; yolo training model will be started with this command
 yolo_command = "yolo task=classify mode=train model=yolov8m-cls.pt data={} imgsz=244 epochs={} batch={}".format(dataset_for_yolo, usual_epochs, usual_batch)
