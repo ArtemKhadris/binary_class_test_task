@@ -136,3 +136,16 @@ To run this model you can use ```python process_vid_by_yolo.py "PATH\TO\INPUT\VI
 
 ## Results
 You can also take a look at my results (results folder). Unfortunately, I can only test the scripts on the videos from which model was trained. Somehow this will not be able to qualitatively characterize the models, but a conclusion can be drawn: The script running on the yolo model runs the fastest, the slowest is tensorflow. However, the learning process has an inverse relationship - the most demanding was learning the yolo model.
+
+To calculate the metrics of result you should use ```calculate_metrics.py```. You can run it via console using ```python calculate_metrics.py "PATH\TO\VIDEO\video_1.mp4" "PATH\TO\PREDICTED_INTERVALS\prediction.json" "PATH\TO\REAL\INTERVALS\real.js"```.
+Video should be a usual .mp4 video, ```prediction.json``` should look like ```[[16, 18], [34, 36], [71, 95]]``` and a ```real.js``` should look like ```[[14, 19], [34, 38], [73, 95]]```.
+The result will be printed in console:
+```
+Metrics:
+MAE: 0.0483
+MSE: 0.0483
+ROC-AUC: 0.9458
+Precision: 0.8529
+Recall: 0.9355
+Accuracy: 0.9517
+```
